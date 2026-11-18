@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://rebax.pages.dev/sitemap.xml
