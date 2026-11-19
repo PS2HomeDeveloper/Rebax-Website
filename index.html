@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rebax Engine - Build apps and games that run natively</title>
-<meta name="description" content="Rebax Engine turns your project into real native code for Windows, Linux, macOS, Android, iOS, PlayStation 2 and PlayStation 1.">
+<title>Rebax Engine</title>
+<meta name="description" content="Rebax Engine is a cross-platform engine for creating applications and games and exporting them as native programs.">
 <meta name="theme-color" content="#0b0d13">
 <link rel="canonical" href="https://rebax.pages.dev/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Rebax Engine - Build apps and games that run natively">
-<meta property="og:description" content="Rebax Engine turns your project into real native code for Windows, Linux, macOS, Android, iOS, PlayStation 2 and PlayStation 1.">
+<meta property="og:title" content="Rebax Engine">
+<meta property="og:description" content="Rebax Engine is a cross-platform engine for creating applications and games and exporting them as native programs.">
 <meta property="og:url" content="https://rebax.pages.dev/">
 <meta property="og:image" content="https://rebax.pages.dev/assets/img/logo.svg">
 <meta name="twitter:card" content="summary">
@@ -30,49 +30,43 @@
 
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow"><i></i> Version 1.0 &mdash; first public release</span>
-    <h1>Build apps and games that run <em>natively</em>.</h1>
-    <p class="lead">Rebax Engine turns your project into real native code for desktop, mobile and classic consoles. No bundled interpreter, no hidden runtime: what you export is a small, fast program.</p>
+    <h1>Rebax Engine</h1>
+    <p class="lead">A cross-platform engine for creating applications and games. Build your project once and export it as a native program for desktop, mobile and console platforms.</p>
     <div class="actions">
-      <a class="btn primary" href="/download/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg> Download Rebax Engine</a>
-      <a class="btn" href="https://github.com/PS2HomeDeveloper/Rebax" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg> View on GitHub</a>
+      <a class="btn primary big" href="/download/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg> Download</a>
+      <a class="btn big" href="/docs/">Documentation</a>
     </div>
-    <div class="pipeline">
-      <div><small>Step 1</small><b>Your project</b><span>Scenes, assets and nodes in the editor.</span></div>
-      <div><small>Step 2</small><b>Generated C</b><span>Readable C code for exactly what you use.</span></div>
-      <div><small>Step 3</small><b>Compiler</b><span>clang or gcc, downloaded once and reused.</span></div>
-      <div><small>Step 4</small><b>Native program</b><span>A real executable, APK or console ELF.</span></div>
-    </div>
+    <p class="hero-note" id="hero-version"></p>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <h2>Why Rebax</h2>
-    <p class="sub">A different export model: your project is compiled, not interpreted.</p>
+    <h2>Features</h2>
+    <p class="sub">Everything you need to take a project from an idea to a finished program.</p>
     <div class="grid c3">
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9zM2.5 9H4M2.5 15H4M20 9h1.5M20 15h1.5M9 2.5V4M15 2.5V4M9 20v1.5M15 20v1.5"/></svg></div><h3>Truly native output</h3><p>Exports are compiled programs. Only the code and resources you use are included, so builds stay small and start fast.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="12" height="9" rx="2"/><rect x="12" y="10" width="9" height="9" rx="2"/></svg></div><h3>One project, many targets</h3><p>Write once and export to Windows, Linux, macOS, Android and iOS from the same project.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="10" rx="3"/><path d="M8 10v4M6 12h4M15.5 11.2h.01M17.5 13h.01"/></svg></div><h3>Classic consoles</h3><p>PlayStation 2 and PlayStation 1 are first-class project types with their own SDKs and exporters.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.3 7.2 15.7 10.8M8.3 16.8l7.4-3.6"/></svg></div><h3>Nodes today, more to come</h3><p>Start with a visual node workflow. A low-level development system for apps and games is planned.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 10.5 12 15l4.5-4.5M4 19h16"/></svg></div><h3>Install only what you need</h3><p>Target packages are downloaded on demand and cached. Nothing you do not use sits on your disk.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg></div><h3>Open and buildable anywhere</h3><p>Build the engine from source on any supported host with a single command. Contributions are welcome.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9zM2.5 9H4M2.5 15H4M20 9h1.5M20 15h1.5M9 2.5V4M15 2.5V4M9 20v1.5M15 20v1.5"/></svg></div><h3>Native performance</h3><p>Exported projects are real programs for each platform, small in size and quick to start.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="12" height="9" rx="2"/><rect x="12" y="10" width="9" height="9" rx="2"/></svg></div><h3>One project, many platforms</h3><p>Create a project once and export it to every supported platform from the same editor.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="10" rx="3"/><path d="M8 10v4M6 12h4M15.5 11.2h.01M17.5 13h.01"/></svg></div><h3>Console support</h3><p>PlayStation 2 and PlayStation 1 are supported as project types, with export built in.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8.3 7.2 15.7 10.8M8.3 16.8l7.4-3.6"/></svg></div><h3>Visual workflow</h3><p>Build scenes and logic with nodes in an integrated editor.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7.5 10.5 12 15l4.5-4.5M4 19h16"/></svg></div><h3>Install what you use</h3><p>Components for each platform are downloaded on demand, so your installation stays small.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg></div><h3>Open source</h3><p>The engine is developed in the open and can be built from source. Contributions are welcome.</p></div>
     </div>
   </div>
 </section>
 
 <section class="alt">
   <div class="wrap">
-    <h2>Platforms</h2>
-    <p class="sub">Every target is built by the same engine. Here is where testing stands today.</p>
+    <h2>Supported platforms</h2>
+    <p class="sub">Export your project to any of the following.</p>
     <div class="platforms">
-      <div class="plat"><b>Windows</b><span class="badge warn">Community testing</span></div>
-      <div class="plat"><b>Linux</b><span class="badge ok">Tested</span></div>
-      <div class="plat"><b>macOS</b><span class="badge warn">Community testing</span></div>
-      <div class="plat"><b>Android</b><span class="badge ok">Tested</span></div>
-      <div class="plat"><b>iOS</b><span class="badge warn">Community testing</span></div>
-      <div class="plat"><b>PlayStation 2</b><span class="badge ok">Tested on hardware</span></div>
-      <div class="plat"><b>PlayStation 1</b><span class="badge warn">Community testing</span></div>
+      <div class="plat"><b>Windows</b></div>
+      <div class="plat"><b>Linux</b></div>
+      <div class="plat"><b>macOS</b></div>
+      <div class="plat"><b>Android</b></div>
+      <div class="plat"><b>iOS</b></div>
+      <div class="plat"><b>PlayStation 2</b></div>
+      <div class="plat"><b>PlayStation 1</b></div>
     </div>
   </div>
 </section>
@@ -80,22 +74,21 @@
 <section>
   <div class="wrap">
     <h2>How it works</h2>
-    <p class="sub">From an empty project to a native program in three steps.</p>
+    <p class="sub">From a new project to a finished program.</p>
     <div class="steps">
-      <div class="step"><div><h3>Create a project</h3><p>Choose a project type: the modern platforms, PlayStation 2 or PlayStation 1. Build your scenes with nodes in the editor.</p></div></div>
-      <div class="step"><div><h3>Install the target you need</h3><p>Open the package window and install the SDK and compiler for your target. Packages are downloaded once and reused.</p></div></div>
-      <div class="step"><div><h3>Export</h3><p>Rebax generates the code, compiles it and gives you the finished program. Run it, share it, or send it to a real console.</p></div></div>
+      <div class="step"><div><h3>Create a project</h3><p>Start a new project and choose the type that matches where you want it to run.</p></div></div>
+      <div class="step"><div><h3>Build it in the editor</h3><p>Create scenes, add assets and set up behavior with the visual node workflow.</p></div></div>
+      <div class="step"><div><h3>Export</h3><p>Choose a platform and export. Rebax prepares everything and gives you the finished program.</p></div></div>
     </div>
   </div>
 </section>
 
 <section class="alt cta">
   <div class="wrap">
-    <h2>Ready to try it?</h2>
-    <p class="sub center-sub">Download the latest release or follow the project on GitHub.</p>
+    <h2>Get Rebax Engine</h2>
+    <p class="sub center-sub">Download the latest version for your platform.</p>
     <div class="actions">
-      <a class="btn primary" href="/download/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg> Download</a>
-      <a class="btn" href="/docs/">Read the docs</a>
+      <a class="btn primary big" href="/download/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 11 12 15.5 16.5 11M5 20h14"/></svg> Download</a>
     </div>
   </div>
 </section>
@@ -106,7 +99,7 @@
     <div class="cols">
       <div>
         <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="28" height="28"><span>Rebax Engine</span></a>
-        <p>Build apps and games that compile to native code.</p>
+        <p>A cross-platform engine for applications and games.</p>
       </div>
       <div><h5>Product</h5><a href="/download/">Download</a><a href="/releases/">Releases</a><a href="/docs/">Documentation</a></div>
       <div><h5>Repositories</h5><a href="https://github.com/PS2HomeDeveloper/Rebax" rel="noopener">Rebax</a><a href="https://github.com/PS2HomeDeveloper/Rebax-SDKs" rel="noopener">Rebax SDKs</a><a href="https://github.com/PS2HomeDeveloper/Rebax-Toolchains" rel="noopener">Rebax Toolchains</a><a href="https://github.com/PS2HomeDeveloper/Rebax-Website" rel="noopener">Rebax Website</a></div>
@@ -116,6 +109,6 @@
   </div>
 </footer>
 <script src="/assets/js/main.js"></script>
-
+<script src="/assets/js/releases.js"></script>
 </body>
 </html>

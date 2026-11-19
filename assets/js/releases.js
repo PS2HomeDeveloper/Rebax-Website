@@ -17,19 +17,19 @@
   };
 
   var PLATFORMS = [
-    { id: "windows", name: "Windows", hint: "Portable folder in a .zip archive. Unzip and run." },
-    { id: "linux", name: "Linux", hint: "Portable folder in a .tar.xz archive. Extract and run." },
-    { id: "macos", name: "macOS", hint: "Universal app bundle in a .zip archive." },
-    { id: "android", name: "Android", hint: "One APK for all phones and tablets." },
-    { id: "ios", name: "iOS", hint: "Unsigned .ipa for sideloading." }
+    { id: "windows", name: "Windows" },
+    { id: "linux", name: "Linux" },
+    { id: "macos", name: "macOS" },
+    { id: "android", name: "Android" },
+    { id: "ios", name: "iOS" }
   ];
 
   var ARCH = {
-    x86_64: { label: "x86_64", text: "64-bit Intel / AMD. Most computers.", order: 0 },
-    arm64: { label: "ARM64", text: "64-bit ARM. Snapdragon PCs, Raspberry Pi 4 and 5, ARM servers.", order: 1 },
-    x86: { label: "x86", text: "32-bit Intel / AMD. Older computers.", order: 2 },
-    arm: { label: "ARM", text: "32-bit ARM. Older ARM boards.", order: 3 },
-    universal: { label: "Universal", text: "Works on every supported device.", order: 0 }
+    x86_64: { label: "x86_64", text: "64-bit Intel / AMD", order: 0 },
+    arm64: { label: "ARM64", text: "64-bit ARM", order: 1 },
+    x86: { label: "x86", text: "32-bit Intel / AMD", order: 2 },
+    arm: { label: "ARM", text: "32-bit ARM", order: 3 },
+    universal: { label: "Universal", text: "All supported devices", order: 0 }
   };
 
   var NAME_RE = /^Rebax-Engine-v[0-9A-Za-z.+-]+?-(windows|linux|macos|android|ios)-(x86_64|arm64|x86|arm|universal)\.(zip|tar\.xz|apk|ipa|dmg)$/;
@@ -156,6 +156,23 @@
     return link;
   }
 
+  function downloadRow(a, label, text) {
+    var row = el("div", "dl-row");
+    var n = el("div", "n");
+    n.appendChild(el("b", "", label));
+    n.appendChild(el("span", "", text + " \u00b7 " + fmtSize(a.size)));
+    row.appendChild(n);
+    var btn = el("a", "btn small");
+    btn.href = a.browser_download_url;
+    btn.rel = "noopener";
+    var ic = el("span");
+    ic.innerHTML = ICONS.file;
+    btn.appendChild(ic);
+    btn.appendChild(document.createTextNode("Download"));
+    row.appendChild(btn);
+    return row;
+  }
+
   function platformCards(release) {
     var info = classify(release);
     var grid = el("div", "dl-grid");
@@ -167,18 +184,17 @@
       h.appendChild(ic);
       h.appendChild(document.createTextNode(p.name));
       card.appendChild(h);
-      card.appendChild(el("p", "hint", p.hint));
-      var files = el("div", "files");
+      var rows = el("div", "rows");
       var items = info.byPlatform[p.id] || [];
       if (!items.length) {
-        files.appendChild(el("p", "meta", "Not available in this release."));
+        rows.appendChild(el("p", "meta", "Not available in this release."));
       }
       items.forEach(function (it) {
         var meta = ARCH[it.arch];
-        var title = it.arch === "universal" ? "Download " + p.name : p.name + " " + meta.label;
-        files.appendChild(fileLink(it.asset, title, meta.text));
+        var text = it.arch === "universal" && p.id === "macos" ? "Intel and Apple silicon" : meta.text;
+        rows.appendChild(downloadRow(it.asset, meta.label, text));
       });
-      card.appendChild(files);
+      card.appendChild(rows);
       grid.appendChild(card);
     });
     return { grid: grid, other: info.other };
@@ -237,8 +253,7 @@
       var built = platformCards(latest);
       root.appendChild(built.grid);
       if (built.other.length) {
-        var more = el("div", "files");
-        more.style.marginTop = "16px";
+        var more = el("div", "files mt-24");
         built.other.forEach(function (a) { more.appendChild(fileLink(a, a.name, "Additional file")); });
         root.appendChild(more);
       }
@@ -279,6 +294,14 @@
     }).catch(function () {
       showError(root, "The release list could not be loaded right now.");
     });
+  }
+
+  var hv = document.getElementById("hero-version");
+  if (hv) {
+    loadReleases().then(function (list) {
+      var l = pickLatest(list);
+      if (l) hv.textContent = "Latest version: " + l.tag_name.replace(/^v/, "");
+    }).catch(function () {});
   }
 
   var dl = document.getElementById("download-root");

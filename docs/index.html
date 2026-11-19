@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Documentation - Rebax Engine</title>
-<meta name="description" content="Getting started, projects, targets and how to build Rebax Engine from source.">
+<meta name="description" content="How to install, use and build Rebax Engine.">
 <meta name="theme-color" content="#0b0d13">
 <link rel="canonical" href="https://rebax.pages.dev/docs/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Documentation - Rebax Engine">
-<meta property="og:description" content="Getting started, projects, targets and how to build Rebax Engine from source.">
+<meta property="og:description" content="How to install, use and build Rebax Engine.">
 <meta property="og:url" content="https://rebax.pages.dev/docs/">
 <meta property="og:image" content="https://rebax.pages.dev/assets/img/logo.svg">
 <meta name="twitter:card" content="summary">
@@ -31,56 +31,46 @@
 <div class="wrap">
   <div class="page-head">
     <h1>Documentation</h1>
-    <p>What you need to start using and building Rebax Engine. The details change as the engine grows, so this page stays short on purpose.</p>
+    <p>An overview of how to install, use and build Rebax Engine.</p>
   </div>
   <div class="doc">
     <nav class="toc" aria-label="On this page">
-      <a href="#start">Getting started</a><a href="#projects">Projects</a><a href="#targets">Targets and packages</a><a href="#build">Build from source</a><a href="#repos">Repositories</a><a href="#ps2">PlayStation 2 run</a>
+      <a href="#install">Installation</a><a href="#projects">Projects</a><a href="#export">Exporting</a><a href="#build">Building from source</a><a href="#repos">Repositories</a>
     </nav>
     <div class="prose">
-      <h2 id="start">Getting started</h2>
-      <ol>
-        <li>Download the package for your platform from the <a href="/download/">download page</a>.</li>
-        <li>Extract it and run Rebax. On Android, install the APK.</li>
-        <li>Create a project, then open the package window and install the target you want to export to.</li>
-      </ol>
-      <p>Packages (SDKs and compilers) are downloaded the first time you need them and reused afterwards.</p>
+      <h2 id="install">Installation</h2>
+      <p>Download the package for your platform from the <a href="/download/">download page</a>. Extract it and run Rebax. No installer is required.</p>
 
       <h2 id="projects">Projects</h2>
-      <p>A project is one folder with a <code>project.rebax</code> file and an <code>assets</code> folder. Rebax has three project types:</p>
+      <p>A project is a folder that holds your scenes and assets. When you create one, you choose its type:</p>
       <ul>
-        <li><b>Modern platforms:</b> one project for Windows, Linux, macOS, Android and iOS.</li>
-        <li><b>PlayStation 2:</b> built for the console&rsquo;s limits and tooling.</li>
-        <li><b>PlayStation 1:</b> the same idea for the original console.</li>
+        <li><b>Modern platforms</b> for Windows, Linux, macOS, Android and iOS.</li>
+        <li><b>PlayStation 2</b> for the PlayStation 2 console.</li>
+        <li><b>PlayStation 1</b> for the PlayStation 1 console.</li>
       </ul>
-      <p>Today projects are built with the node workflow. A low-level development system for writing apps and games directly against the Rebax native API is planned.</p>
+      <p>Projects are currently built with the visual node workflow in the editor.</p>
 
-      <h2 id="targets">Targets and packages</h2>
-      <p>Exports are compiled with the compiler package (clang, or gcc for the PlayStation targets) against the SDK package of the target. Both are installed from the package window. The engine uses a compiler already on your machine when it can.</p>
-      <div class="note">iOS and macOS exports can only be produced on a Mac, because they need Apple&rsquo;s tools.</div>
+      <h2 id="export">Exporting</h2>
+      <p>Open the export window, choose the platform you want and start the export. Rebax produces a finished program that is ready to run or share.</p>
+      <p>The first time you export to a platform, Rebax downloads the components that platform needs. They are stored on your computer and reused for later exports.</p>
+      <div class="note">Exporting for macOS and iOS requires a Mac.</div>
 
-      <h2 id="build">Build from source</h2>
-      <p>You only need Git and <code>make</code>. The build downloads what it needs.</p>
+      <h2 id="build">Building from source</h2>
+      <p>You need Git and <code>make</code>. Everything else is downloaded automatically.</p>
 <pre><code>git clone https://github.com/PS2HomeDeveloper/Rebax.git
 cd Rebax
 make</code></pre>
-      <p>That builds the engine for the machine you are on. To build for another platform:</p>
+      <p>This builds Rebax for the computer you are using. To build for another platform, name the platform and architecture:</p>
 <pre><code>make windows x86_64
-make linux arm64
-make android all
-make android arm64-v8a</code></pre>
-      <p><code>make android all</code> produces a single APK containing every Android architecture.</p>
+make linux arm64</code></pre>
 
       <h2 id="repos">Repositories</h2>
       <ul>
-        <li><a href="https://github.com/PS2HomeDeveloper/Rebax" rel="noopener">Rebax</a> &mdash; the engine and editor.</li>
-        <li><a href="https://github.com/PS2HomeDeveloper/Rebax-SDKs" rel="noopener">Rebax SDKs</a> &mdash; the target SDK packages.</li>
-        <li><a href="https://github.com/PS2HomeDeveloper/Rebax-Toolchains" rel="noopener">Rebax Toolchains</a> &mdash; the compiler packages.</li>
-        <li><a href="https://github.com/PS2HomeDeveloper/Rebax-Website" rel="noopener">Rebax Website</a> &mdash; this website.</li>
+        <li><a href="https://github.com/PS2HomeDeveloper/Rebax" rel="noopener">Rebax</a>: the engine and editor.</li>
+        <li><a href="https://github.com/PS2HomeDeveloper/Rebax-SDKs" rel="noopener">Rebax SDKs</a>: components used to export to each platform.</li>
+        <li><a href="https://github.com/PS2HomeDeveloper/Rebax-Toolchains" rel="noopener">Rebax Toolchains</a>: compilers used by the export process.</li>
+        <li><a href="https://github.com/PS2HomeDeveloper/Rebax-Website" rel="noopener">Rebax Website</a>: this website.</li>
       </ul>
-
-      <h2 id="ps2">PlayStation 2 run over the network</h2>
-      <p>With a PlayStation 2 project open, the run menu can send your game to a real console through <code>ps2link</code>. The PlayStation 2 needs a network connection (a built-in port on slim models, the network adapter on the original model) and <code>ps2link.elf</code> running. The in-engine setup window walks you through it and exports the two files you need.</p>
     </div>
   </div>
 </div>
@@ -92,7 +82,7 @@ make android arm64-v8a</code></pre>
     <div class="cols">
       <div>
         <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="28" height="28"><span>Rebax Engine</span></a>
-        <p>Build apps and games that compile to native code.</p>
+        <p>A cross-platform engine for applications and games.</p>
       </div>
       <div><h5>Product</h5><a href="/download/">Download</a><a href="/releases/">Releases</a><a href="/docs/">Documentation</a></div>
       <div><h5>Repositories</h5><a href="https://github.com/PS2HomeDeveloper/Rebax" rel="noopener">Rebax</a><a href="https://github.com/PS2HomeDeveloper/Rebax-SDKs" rel="noopener">Rebax SDKs</a><a href="https://github.com/PS2HomeDeveloper/Rebax-Toolchains" rel="noopener">Rebax Toolchains</a><a href="https://github.com/PS2HomeDeveloper/Rebax-Website" rel="noopener">Rebax Website</a></div>
