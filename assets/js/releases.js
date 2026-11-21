@@ -191,8 +191,16 @@
       }
       items.forEach(function (it) {
         var meta = ARCH[it.arch];
+        var label = meta.label;
         var text = it.arch === "universal" && p.id === "macos" ? "Intel and Apple silicon" : meta.text;
-        rows.appendChild(downloadRow(it.asset, meta.label, text));
+        if (p.id === "ios") {
+          label = it.arch === "arm64" ? "Device" : "Simulator";
+          text = it.arch === "arm64" ? "iPhone and iPad" : "For testing on a Mac";
+        } else if (p.id === "macos") {
+          label = it.arch === "arm64" ? "Apple silicon" : "Intel";
+          text = it.arch === "arm64" ? "M1 and newer" : "Intel Macs";
+        }
+        rows.appendChild(downloadRow(it.asset, label, text));
       });
       card.appendChild(rows);
       grid.appendChild(card);
