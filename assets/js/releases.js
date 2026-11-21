@@ -29,10 +29,12 @@
     arm64: { label: "ARM64", text: "64-bit ARM", order: 1 },
     x86: { label: "x86", text: "32-bit Intel / AMD", order: 2 },
     arm: { label: "ARM", text: "32-bit ARM", order: 3 },
-    universal: { label: "Universal", text: "All supported devices", order: 0 }
+    universal: { label: "Universal", text: "All supported devices", order: 0 },
+    "arm64-v8a": { label: "ARM64", text: "Most phones and tablets from 2016 onward", order: 1 },
+    "armeabi-v7a": { label: "ARM 32-bit", text: "Older phones and tablets", order: 2 }
   };
 
-  var NAME_RE = /^Rebax-Engine-v[0-9A-Za-z.+-]+?-(windows|linux|macos|android|ios)-(x86_64|arm64|x86|arm|universal)\.(zip|tar\.xz|apk|ipa|dmg)$/;
+  var NAME_RE = /^Rebax-Engine-v[0-9A-Za-z.+-]+?-(windows|linux|macos|android|ios)-(x86_64|arm64-v8a|armeabi-v7a|arm64|x86|arm|universal)\.(zip|tar\.xz|apk|ipa|dmg)$/;
 
   function el(tag, cls, text) {
     var e = document.createElement(tag);
@@ -136,7 +138,8 @@
       (byPlatform[m[1]] = byPlatform[m[1]] || []).push({ asset: a, arch: m[2] });
     });
     Object.keys(byPlatform).forEach(function (k) {
-      byPlatform[k].sort(function (a, b) { return ARCH[a.arch].order - ARCH[b.arch].order; });
+      var rank = function (x) { return k === "android" ? { universal: 0, "arm64-v8a": 1, "armeabi-v7a": 2, x86_64: 3, x86: 4 }[x.arch] : ARCH[x.arch].order; };
+      byPlatform[k].sort(function (a, b) { return rank(a) - rank(b); });
     });
     return { byPlatform: byPlatform, other: other };
   }
@@ -193,6 +196,8 @@
         var meta = ARCH[it.arch];
         var label = meta.label;
         var text = it.arch === "universal" && p.id === "macos" ? "Intel and Apple silicon" : meta.text;
+        if (p.id === "android" && it.arch === "x86_64") text = "Emulators and Intel / AMD devices";
+        if (p.id === "android" && it.arch === "x86") text = "Older emulators and devices";
         if (p.id === "ios") {
           label = it.arch === "arm64" ? "Device" : "Simulator";
           text = it.arch === "arm64" ? "iPhone and iPad" : "For testing on a Mac";
