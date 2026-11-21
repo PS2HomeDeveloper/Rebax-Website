@@ -131,7 +131,8 @@ h3 { font-size: 20px; margin: 0 0 8px; letter-spacing: -.2px; }
 .tag.pre { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 50%, var(--line)); }
 .meta { color: var(--muted); font-size: 15px; }
 
-.dl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+.dl-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px; margin-top: 24px; align-items: start; }
+.dl-grid > * { min-width: 0; }
 .dl-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; display: flex; flex-direction: column; gap: 14px; }
 .dl-card h3 { display: flex; align-items: center; gap: 10px; margin: 0; }
 .dl-card h3 svg { width: 24px; height: 24px; color: var(--accent-2); }
@@ -205,7 +206,7 @@ footer a:hover { color: var(--text); }
 footer .fine { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 14px; }
 
 @media (max-width: 900px) {
-  .grid.c3, .dl-grid { grid-template-columns: 1fr; }
+  .grid.c3 { grid-template-columns: 1fr; }
   .platforms { grid-template-columns: repeat(2, 1fr); }
   .pipeline { grid-template-columns: 1fr 1fr; }
   .pipeline div:nth-child(2) { border-right: 0; }
@@ -238,10 +239,18 @@ footer .fine { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--
 .nf { padding: 96px 0; }
 .center-sub { margin-left: auto; margin-right: auto; }
 
-.dl-grid { grid-template-columns: repeat(2, 1fr); }
 .dl-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 10px 0; border-top: 1px solid var(--line); }
 .dl-row:first-of-type { border-top: 0; }
+.dl-row .n { min-width: 0; }
 .dl-row .n b { display: block; font-size: 16px; }
-.dl-row .n span { display: block; color: var(--muted); font-size: 13px; }
+.dl-row .n span { display: block; color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
 .dl-card .rows { display: flex; flex-direction: column; }
 .dl-row .btn { flex: none; }
+
+@media (max-width: 720px) {
+  .dl-card { padding: 16px; gap: 8px; }
+  .dl-card h3 { font-size: 18px; }
+  .dl-row { padding: 8px 0; gap: 10px; }
+  .dl-row .n b { font-size: 15px; }
+  .dl-row .btn { padding: 7px 12px; font-size: 14px; }
+}
